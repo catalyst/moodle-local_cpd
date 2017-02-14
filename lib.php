@@ -62,7 +62,7 @@ if ($CFG->release < 2013111800) {
  *
  * @return void
  */
-function local_cpd_extends_navigation(global_navigation $navroot) {
+function local_cpd_extend_navigation(global_navigation $navroot) {
     if (!isloggedin()) {
         return;
     }
