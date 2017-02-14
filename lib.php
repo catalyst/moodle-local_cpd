@@ -31,33 +31,6 @@ use local_cpd\util;
 defined('MOODLE_INTERNAL') || die;
 
 /**
- * Autoload a class.
- *
- * This is a hack necessary to support Moodle <2.6, which doesn't introduce
- * support for autoloading classes under plugin namespaces.
- *
- * @param string $classname The fully-qualified name of the class to autoload.
- *
- * @return void
- */
-function local_cpd_class_autoload($classname) {
-    $namespace       = 'local_cpd\\';
-    $namespacelength = strlen($namespace);
-
-    if (substr($classname, 0, $namespacelength) === $namespace) {
-        $filename = str_replace('\\', '/', substr($classname, 10)) . '.php';
-
-        extract($GLOBALS);
-        include __DIR__ . '/classes/' . $filename;
-    }
-}
-
-// Register an autoloader for Moodle <2.6
-if ($CFG->release < 2013111800) {
-    spl_autoload_register('local_cpd_class_autoload');
-}
-
-/**
  * Extend the site navigation
  *
  * @return void
