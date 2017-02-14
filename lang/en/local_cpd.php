@@ -133,3 +133,6 @@ $string['event:yeardeleted']     = 'CPD year deleted';
 $string['event:yeardeleteddesc'] = 'The user with ID \'{$a->userid}\' deleted the CPD year with ID \'{$a->objectid}\'';
 $string['event:yearupdated']     = 'CPD year updated';
 $string['event:yearupdateddesc'] = 'The user with ID \'{$a->userid}\' updated the CPD year with ID \'{$a->objectid}\'';
+
+// Catalyst fixes
+$string['status'] = 'Status';
