@@ -68,9 +68,7 @@ class rb_source_local_cpd_activity extends abstract_source {
             ),
         );
 
-        $this->add_position_tables_to_joinlist($joinlist, 'base', 'userid');
-        $this->add_manager_tables_to_joinlist($joinlist, 'position_assignment',
-                                              'reportstoid');
+        $this->add_job_assignment_tables_to_joinlist($joinlist, 'base', 'userid');
         $this->add_user_table_to_joinlist($joinlist, 'base', 'userid');
 
         return $joinlist;
@@ -172,8 +170,7 @@ class rb_source_local_cpd_activity extends abstract_source {
             ),
         );
 
-        $this->add_position_fields_to_columns($columnoptions);
-        $this->add_manager_fields_to_columns($columnoptions);
+        $this->add_job_assignment_fields_to_columns($columnoptions);
         $this->add_user_fields_to_columns($columnoptions);
 
         return $columnoptions;
@@ -207,8 +204,7 @@ class rb_source_local_cpd_activity extends abstract_source {
             ),
         );
 
-        $this->add_manager_fields_to_filters($filteroptions);
-        $this->add_position_fields_to_filters($filteroptions);
+        $this->add_job_assignment_fields_to_filters($filteroptions);
         $this->add_user_fields_to_filters($filteroptions);
 
         return $filteroptions;
@@ -323,5 +319,14 @@ class rb_source_local_cpd_activity extends abstract_source {
      */
     public function rb_filter_cpd_activity_type_list() {
         return activity_type::menu();
+    }
+
+    /**
+     * Do not test this custom rb_source during the Totara core rb sources tests.
+     */
+    public function is_ignored() {
+        if (PHPUNIT_TEST) {
+            return true;
+        }
     }
 }
